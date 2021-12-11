@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { UserDetailsView } from "./UserDetailsView";
+import  {UserDetailsView}  from "./components/UserDetailsView";
 
 
 function App() {
