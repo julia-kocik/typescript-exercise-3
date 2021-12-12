@@ -2,12 +2,12 @@ import { useReducer } from 'react';
 
 interface AccountProps {
     balance: number;
-    remove: any,
+    remove: (balance: number) => void;
   }
   
 const initialState = {count: 0};
 
-function reducer(state: any, action: any) {
+function reducer(state: {count: number}, action: {type: string}) {
   switch (action.type) {
     case 'increment':
       return {count: state.count + 1};
@@ -21,11 +21,11 @@ export const Account = (props: AccountProps) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const {balance, remove} = props;
     return (
-        <div>
-            <p>{balance}</p>
-            <p>Counter: {state.count}</p>
-            <button onClick={() => dispatch({type: 'increment'})}>Increment</button>
-            <button onClick={() => remove(balance)}>Delete</button>
+        <div className='account'>
+            <p>Balance: {balance}</p>
+            <p>Transactions: {state.count}</p>
+            <button className='btn' onClick={() => dispatch({type: 'increment'})}>Increment</button>
+            <button className='btn' onClick={() => remove(balance)}>Delete</button>
         </div>
     )
 }
